@@ -98,6 +98,11 @@ public class ImageDisplayer extends JPanel{
 
 	public void updateFile(byte[] fileBytes) {
 		this.currentData = fileBytes;
+
+		this.currentOffset = 0;
+		if (this.fileScroller != null) 
+			remove(this.fileScroller);
+		revalidate();
 		//TODO: Re-draw
 	}
 

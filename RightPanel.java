@@ -175,9 +175,9 @@ public class RightPanel extends JPanel {
 	}
 
 	public void setUp() {
-		this.imageDisplayer.updateOffset(0);
+		// Must be update size first
 		this.imageDisplayer.setInitialSize();
-		//this.imageDisplayer.updateSize(256, 512); // Hard coded
+		this.imageDisplayer.updateOffset(0);
 		this.revalidate();
 	}
 
