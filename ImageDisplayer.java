@@ -66,7 +66,14 @@ public class ImageDisplayer extends JPanel{
 	}
 
 	
-
+	public void setInitialSize() {
+		int pixLen = this.currentData.length / Pixel.SIZE;
+		if (pixLen < 256) {
+			updateSize(pixLen, 1);
+		} else {
+			updateSize(256, Math.min(pixLen / 256, 512));
+		}
+	}
 
 	public void updateSize(int width, int height) {
 		this.width = Math.max(width, 1);
@@ -99,6 +106,7 @@ public class ImageDisplayer extends JPanel{
 		if (this.fileScroller != null) 
 			remove(this.fileScroller);
 		int max = this.currentData.length / Pixel.SIZE / this.width;
+		if (max <= 512) return; // No scroll bar neccesary
 		this.fileScroller = new JScrollBar(JScrollBar.VERTICAL, 0, 1, 0, max - this.height);
 		
 		this.fileScroller.addAdjustmentListener(e -> {
@@ -126,7 +134,6 @@ public class ImageDisplayer extends JPanel{
 		for (int i = 0; i < totalPixels; i++) {
 			int dataIdx = this.currentOffset + (i * Pixel.SIZE);
 			if (dataIdx + 3 >= currentData.length) break;
-			
 			// Ensure we don't run off the end of the byte array
 			if (dataIdx + 3 >= currentData.length) break;
 

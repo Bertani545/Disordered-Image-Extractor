@@ -517,6 +517,7 @@ public class ImageEditor extends JPanel{
 		// First we do the png
 		// Get borders
 		Pixel[] pixels = this.bottomLayer.getPixels();
+		if (pixels == null) return;
 		// Top
 		int top = 0;
 		for (int i = 0; i < pixels.length; i++) {
@@ -553,6 +554,7 @@ public class ImageEditor extends JPanel{
 
 		int w = right - left + 1;
 		int h = bottom - top + 1;
+		if (w == 0 || h == 0) return; // No image
 		BufferedImage newImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 		int[] internalPixels = ((java.awt.image.DataBufferInt) newImage.getRaster().getDataBuffer()).getData();
 		int totalPixels = w * h;

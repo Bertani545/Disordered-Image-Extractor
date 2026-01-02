@@ -12,6 +12,9 @@ import javax.swing.*;
 */
 
 
+/*
+	TODO: Corregir el select
+*/
 
 public class ImageExtractor {
 
