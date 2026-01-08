@@ -1,3 +1,5 @@
+package com.IMExtraction;
+
 import java.awt.image.BufferedImage;
 
 public class CopyBuffer {

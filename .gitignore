@@ -1,7 +1,3 @@
-Examples/
-FirstThing/
-*.class
-*.png
-*.xcf
-*.bin
-HowToCompile
+.mvn/
+target/
+

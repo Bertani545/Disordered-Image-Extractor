@@ -1,3 +1,4 @@
+package com.IMExtraction;
 // At the end, they are all exported to  rgb (as in png) so
 // the original format must be sotored somewhere 
 

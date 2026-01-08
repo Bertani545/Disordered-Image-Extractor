@@ -1,3 +1,5 @@
+package com.IMExtraction;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,7 +18,7 @@ import javax.swing.*;
 	TODO: Corregir el select
 */
 
-public class ImageExtractor {
+public class Main {
 
 	public static void main(String[] args) {
 		//Schedule a job for the event-dispatching thread:
