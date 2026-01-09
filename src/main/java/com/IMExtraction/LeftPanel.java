@@ -101,13 +101,4 @@ public class LeftPanel extends JPanel {
 		});
 	}
 
-
-	public void setUp() {
-		// Create the save logic
-	}
-/*
-	public void display() {
-		this.imageEditor.display();
-	}
-*/
 }

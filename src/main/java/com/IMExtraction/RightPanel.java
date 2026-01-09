@@ -147,8 +147,12 @@ public class RightPanel extends JPanel {
 		});
 		topNav.add(addHeightBtn);
 		
-
-		JButton decreasePixelBtn = new JButton("-P");
+		JButton decreasePixelBtn = new JButton("--P");
+		decreasePixelBtn.addActionListener(e -> {
+			this.imageDisplayer.updateDataStartingPoint(-4 * 32);
+		});
+		topNav.add(decreasePixelBtn);
+		decreasePixelBtn = new JButton("-P");
 		decreasePixelBtn.addActionListener(e -> {
 			this.imageDisplayer.updateDataStartingPoint(-4);
 		});
@@ -156,6 +160,11 @@ public class RightPanel extends JPanel {
 		JButton advancePixelBtn = new JButton("+P");
 		advancePixelBtn.addActionListener(e -> {
 			this.imageDisplayer.updateDataStartingPoint(4);
+		});
+		topNav.add(advancePixelBtn);
+		advancePixelBtn = new JButton("++P");
+		advancePixelBtn.addActionListener(e -> {
+			this.imageDisplayer.updateDataStartingPoint(4 * 32);
 		});
 		topNav.add(advancePixelBtn);
 		

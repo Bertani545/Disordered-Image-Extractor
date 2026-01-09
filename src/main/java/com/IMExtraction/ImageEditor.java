@@ -490,6 +490,8 @@ public class ImageEditor extends JPanel{
 
 	private String getSavePath() {
 		JFileChooser fileChooser = new JFileChooser();
+		File workingDirectory = new File(System.getProperty("user.dir"));
+		fileChooser.setCurrentDirectory(workingDirectory);
 		fileChooser.setDialogTitle("Choose a place to save and a name for both files");
 		int userSelection = fileChooser.showSaveDialog(this);
 
@@ -510,7 +512,7 @@ public class ImageEditor extends JPanel{
 			if (response == JOptionPane.NO_OPTION) path = "";
 			return path;
 		}
-		return "default";
+		return "";
 	}
 
 
@@ -564,9 +566,8 @@ public class ImageEditor extends JPanel{
 		
 
 		String savePath = "";
-		while (savePath == "") {
-			savePath = getSavePath();
-		}
+		savePath = getSavePath();
+		if (savePath == "") return;
 		try {
 			File outputImg = new File(savePath + ".png");
 			FileOutputStream outputBinary = new FileOutputStream(savePath + ".bin");

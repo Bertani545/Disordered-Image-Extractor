@@ -48,11 +48,12 @@ public class ProgramGUI extends JFrame {
 		JButton fileButton = new JButton("New File");
 		fileButton.addActionListener(e -> {
 			String path = "";
-			while (path == "") {
-				path = getFileToExplore();
+			path = getFileToExplore();
+			if (path != "") {
+				readFile(path);
+				display();
 			}
-			readFile(path);
-			display();
+			
 		});
 		
 		topNav.add(fileButton);
