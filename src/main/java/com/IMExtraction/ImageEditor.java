@@ -419,7 +419,6 @@ public class ImageEditor extends JPanel{
 
 		public TopLayer(CopyBuffer copyBuffer) {
 			this.pixels = copyBuffer.getPixels();
-			if (pixels == null) return;
 
 			this.width = copyBuffer.getWidth();
 			this.height = copyBuffer.getHeight();
@@ -476,6 +475,7 @@ public class ImageEditor extends JPanel{
 	}
 
 	public void makePaste(CopyBuffer copyBuffer) {
+		if (copyBuffer.getPixels() == null) return;
 		this.topLayer = new TopLayer(copyBuffer);
 		imagePanel.repaint();
 	}
