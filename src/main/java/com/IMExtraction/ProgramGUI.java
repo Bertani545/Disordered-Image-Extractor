@@ -32,7 +32,7 @@ public class ProgramGUI extends JFrame {
 
 	public ProgramGUI() {
 
-		copyBuffer = new CopyBuffer();
+		copyBuffer = CopyBuffer.getInstance();
 
 		//Create and set up the window.
 		setTitle("Image Extractor");
@@ -107,7 +107,8 @@ public class ProgramGUI extends JFrame {
 			this.fileContents = new byte[0];
 		}
 		rightPanel.updateFile(this.fileContents);
-		//leftPanel.reset()
+		this.copyBuffer.clear();
+		leftPanel.clear();
 	}
 
 	public void display() {

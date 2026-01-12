@@ -101,4 +101,7 @@ public class LeftPanel extends JPanel {
 		});
 	}
 
+	public void clear() {
+		this.imageEditor.clear();
+	}
 }

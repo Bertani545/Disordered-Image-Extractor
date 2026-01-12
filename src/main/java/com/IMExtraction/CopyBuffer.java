@@ -6,7 +6,24 @@ public class CopyBuffer {
 	private Pixel[] pixels;
 	private int height;
 	private int width;
-	public CopyBuffer() {}
+
+	private CopyBuffer() {}
+
+
+	private static class SingletonHelper {
+		private static final CopyBuffer INSTANCE = new CopyBuffer();
+	}
+
+	public static CopyBuffer getInstance() {
+		return SingletonHelper.INSTANCE;
+	}
+
+
+	public void clear() {
+		this.pixels = null;
+		this.height = 0;
+		this.width = 0;
+	}
 
 
 	public void updateData(int w, int h, Pixel[] pixels) {

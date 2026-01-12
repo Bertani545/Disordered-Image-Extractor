@@ -401,6 +401,13 @@ public class ImageEditor extends JPanel{
 		public Pixel[] getPixels() {
 			return this.pixels;
 		}
+
+		public void clear() {
+			for (int i = 0; i < this.pixels.length; i++) {
+				this.pixels[i] = null;
+			}
+			this.bottomImage = getImageFromPixels();
+		}
 	}
 
 	class TopLayer {
@@ -594,5 +601,12 @@ public class ImageEditor extends JPanel{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	public void clear() {
+		this.topLayer = null;
+		this.bottomLayer.clear();
+		imagePanel.repaint();
 	}
 }
