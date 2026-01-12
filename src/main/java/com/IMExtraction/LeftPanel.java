@@ -56,13 +56,22 @@ public class LeftPanel extends JPanel {
 		imageWrapper.add(imageEditor, BorderLayout.CENTER);
 		add(imageWrapper);
 
+		JPanel bottomNav = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		bottomNav.setPreferredSize(new Dimension(getWidth(), 30));
+
 
 		JButton exportButton = new JButton("Export Image");
 		exportButton.addActionListener(e -> {
 			this.imageEditor.exportImage();
 		});
-		add(exportButton, BorderLayout.SOUTH);
+		bottomNav.add(exportButton);
+		JButton clearButton = new JButton("Clear Canvas");
+		clearButton.addActionListener(e -> {
+			this.imageEditor.clear();
+		});
+		bottomNav.add(clearButton);
 
+		add(bottomNav, BorderLayout.SOUTH);
 	}
 
 	public void setCopyBuffer(CopyBuffer cb) {
