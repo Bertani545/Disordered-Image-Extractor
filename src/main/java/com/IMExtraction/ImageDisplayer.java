@@ -41,6 +41,7 @@ public class ImageDisplayer extends JPanel{
 	private int currentOffset = 0x0;
 	private int width = 1;
 	private int height = 1;
+	private int lineOffset = 0;
 
 	public ImageDisplayer(){
 		this.setLayout(new BorderLayout());
@@ -101,6 +102,7 @@ public class ImageDisplayer extends JPanel{
 		this.currentData = fileBytes;
 
 		this.currentOffset = 0;
+		this.lineOffset = 0;
 		if (this.fileScroller != null) 
 			remove(this.fileScroller);
 		revalidate();
@@ -138,7 +140,7 @@ public class ImageDisplayer extends JPanel{
 		int[] internalPixels = ((java.awt.image.DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
 		for (int i = 0; i < totalPixels; i++) {
-			int dataIdx = this.currentOffset + (i * Pixel.SIZE);
+			int dataIdx = this.currentOffset + this.lineOffset + (i * Pixel.SIZE);
 			if (dataIdx + 3 >= currentData.length) break;
 			// Ensure we don't run off the end of the byte array
 			if (dataIdx + 3 >= currentData.length) break;
@@ -344,9 +346,14 @@ public class ImageDisplayer extends JPanel{
 		if (this.currentData == null) return;
 		this.updateOffsetNoUpdate(this.currentOffset + dx);
 	}
-}
 
-// ARGB in tile molester is BGRA here
+	public void updateLineOffset(int dx) {
+		if (this.currentData == null) return;
+		this.lineOffset += dx;
+		this.lineOffset = (this.lineOffset + this.width * Pixel.SIZE) % this.width * Pixel.SIZE;
+		display();
+	}
+}
 
 // Starts as ARGB, as we change, we start to see what is their encoding
 // Then we save as RGBA (for png) and save in the export the original encoding to retrieve it
