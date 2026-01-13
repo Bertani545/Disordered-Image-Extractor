@@ -149,34 +149,34 @@ public class RightPanel extends JPanel {
 		
 		JButton decreasePixelBtn = new JButton("--P");
 		decreasePixelBtn.addActionListener(e -> {
-			this.imageDisplayer.updateDataStartingPoint(-4 * 32);
+			this.imageDisplayer.updateLineOffset(-4 * 32);
 		});
 		topNav.add(decreasePixelBtn);
 		decreasePixelBtn = new JButton("-P");
 		decreasePixelBtn.addActionListener(e -> {
-			this.imageDisplayer.updateDataStartingPoint(-4);
+			this.imageDisplayer.updateLineOffset(-4);
 		});
 		topNav.add(decreasePixelBtn);
 		JButton advancePixelBtn = new JButton("+P");
 		advancePixelBtn.addActionListener(e -> {
-			this.imageDisplayer.updateDataStartingPoint(4);
+			this.imageDisplayer.updateLineOffset(4);
 		});
 		topNav.add(advancePixelBtn);
 		advancePixelBtn = new JButton("++P");
 		advancePixelBtn.addActionListener(e -> {
-			this.imageDisplayer.updateDataStartingPoint(4 * 32);
+			this.imageDisplayer.updateLineOffset(4 * 32);
 		});
 		topNav.add(advancePixelBtn);
 		
 
 		JButton decreaseByteBtn = new JButton("-B");
 		decreaseByteBtn.addActionListener(e -> {
-			this.imageDisplayer.updateDataStartingPoint(-1);
+			this.imageDisplayer.updateLineOffset(-1);
 		});
 		topNav.add(decreaseByteBtn);
 		JButton advanceByteBtn = new JButton("+B");
 		advanceByteBtn.addActionListener(e -> {
-			this.imageDisplayer.updateDataStartingPoint(1);
+			this.imageDisplayer.updateLineOffset(1);
 		});
 		topNav.add(advanceByteBtn);
 		

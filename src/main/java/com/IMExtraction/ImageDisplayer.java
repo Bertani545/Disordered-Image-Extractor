@@ -194,8 +194,6 @@ public class ImageDisplayer extends JPanel{
 					requestFocusInWindow();
 					if (img == null) return;
 					startPoint = e.getPoint();
-					startPoint.x++;
-					startPoint.y++;
 					startPoint.x /= zoomFactor;
 					startPoint.y /= zoomFactor;
 					validatePoint(startPoint);
@@ -350,7 +348,7 @@ public class ImageDisplayer extends JPanel{
 	public void updateLineOffset(int dx) {
 		if (this.currentData == null) return;
 		this.lineOffset += dx;
-		this.lineOffset = (this.lineOffset + this.width * Pixel.SIZE) % this.width * Pixel.SIZE;
+		this.lineOffset = (this.lineOffset + this.width * Pixel.SIZE) % (this.width * Pixel.SIZE);
 		display();
 	}
 }
