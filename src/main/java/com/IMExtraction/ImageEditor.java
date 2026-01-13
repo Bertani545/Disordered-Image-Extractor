@@ -160,6 +160,8 @@ public class ImageEditor extends JPanel{
 						validatePoint(mousePosition);
 					} else {
 						startPoint = e.getPoint();
+						startPoint.x++;
+						startPoint.y++;
 						startPoint.x /= zoomFactor;
 						startPoint.y /= zoomFactor;
 						validatePoint(startPoint);
@@ -183,6 +185,8 @@ public class ImageEditor extends JPanel{
 						int y =  (int) Math.min(startPoint.y, currPoint.y / zoomFactor);
 						int w =  (int) Math.abs(startPoint.x - currPoint.x / zoomFactor);
 						int h =  (int) Math.abs(startPoint.y - currPoint.y / zoomFactor);
+						if (startPoint.x >= currPoint.x / zoomFactor) {w++;w++;}
+						if (startPoint.y >= currPoint.y / zoomFactor) {h++;h++;}
 						selection.setBounds(x, y, w, h);
 					}
 					paintLayers();

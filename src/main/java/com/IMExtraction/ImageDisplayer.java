@@ -194,6 +194,8 @@ public class ImageDisplayer extends JPanel{
 					requestFocusInWindow();
 					if (img == null) return;
 					startPoint = e.getPoint();
+					startPoint.x++;
+					startPoint.y++;
 					startPoint.x /= zoomFactor;
 					startPoint.y /= zoomFactor;
 					validatePoint(startPoint);
@@ -210,6 +212,8 @@ public class ImageDisplayer extends JPanel{
 					int y =  (int) Math.min(startPoint.y, (currPoint.y + 1) / zoomFactor);
 					int w =  (int) Math.abs(startPoint.x - (currPoint.x + 1) / zoomFactor);
 					int h =  (int) Math.abs(startPoint.y - (currPoint.y + 1) / zoomFactor);
+					if (startPoint.x >= currPoint.x / zoomFactor) {w++;w++;}
+					if (startPoint.y >= currPoint.y / zoomFactor) {h++;h++;}
 					selection.setBounds(x, y, w, h);
 					repaint();
 				}
@@ -293,7 +297,7 @@ public class ImageDisplayer extends JPanel{
 
 		Pixel[] pixels = new Pixel[rW * rH];
 		for (int i = 0; i < rH; i++) {
-			int rowOffset = this.currentOffset + ((rect.y + i) * stride) + (rect.x * Pixel.SIZE);
+			int rowOffset = this.currentOffset + this.lineOffset + ((rect.y + i) * stride) + (rect.x * Pixel.SIZE);
 			for (int j = 0; j < rW; j++) {
 				int pixelOffset = rowOffset + Pixel.SIZE * j;
 				byte[] pixelData = Arrays.copyOfRange(this.currentData, pixelOffset, pixelOffset + 4);
